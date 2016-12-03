@@ -8,7 +8,6 @@ y = 0
 visited = Set.new [[0, 0]]
 
 ARGF
-  .readlines
   .first
   .split(', ')
   .map { |e| e.split('', 2) }

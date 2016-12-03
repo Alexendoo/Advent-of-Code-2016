@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 p ARGF
-  .readlines
   .first
   .split(', ')
   .map { |e| e.split('', 2) }
