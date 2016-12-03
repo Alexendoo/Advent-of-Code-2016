@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
 p ARGF
-  .map { |line| line.split.map { |num| num.to_i } }
+  .map { |line| line.split.map(&:to_i) }
   .each_slice(3)
-  .map { |slice| slice.transpose }
+  .map(&:transpose)
   .flatten(1)
-  .map { |triangle| triangle.sort }
-  .count { |triangle| triangle[0] + triangle[1] > triangle[2] }
+  .map(&:sort)
+  .count { |(a, b, c)| a + b > c }
