@@ -12,12 +12,10 @@ p (0..Float::INFINITY)
   .select { |hash| hash[5] =~ /\d/ }
   .map { |hash| [hash[5].to_i, hash[6]] }
   .with_object(Array.new(8))
-  .take_while { |(pos, char), arr|
-    puts "#{pos}: #{char} --- #{arr}"
+  .select { |(pos, char), arr|
     arr[pos] ||= char if pos < arr.length
-    arr.any?(&:nil?)
+    !arr.any?(&:nil?)
   }
-  .force
-  .last
+  .first
   .last
   .join
