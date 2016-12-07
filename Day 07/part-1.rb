@@ -2,9 +2,7 @@
 
 class String
   def abba?
-    self.each_char
-      .each_cons(4)
-      .any? { |(a, b, c, d)| a == d && b == c && a != b }
+    self.match /(.)(?!\1)(.)\2\1/
   end
 end
 
