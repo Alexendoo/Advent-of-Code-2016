@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 
-chars = ARGF.first.strip.chars.reverse
+chars = ARGF.first.strip.chars
 out = []
 
 while chars.length > 0
-  char = chars.pop
+  char = chars.shift
   if char == '('
-    count, length = chars.pop(chars.length - chars.rindex(')')).join.scan(/\d+/).map(&:to_i)
-    push = chars.pop(length).reverse
-    count.times { out.concat push }
+    length, count = chars.shift(chars.index(')') + 1).join.scan(/\d+/).map(&:to_i)
+    repeat = chars.shift(length)
+    count.times { out.concat repeat }
   else
     out.push char
   end
